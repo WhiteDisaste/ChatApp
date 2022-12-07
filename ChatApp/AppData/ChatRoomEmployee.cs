@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChatApp
 {
-   public partial class Employee
+    public partial class ChatRoomEmployee
     {
         public int Id { get; set; }
-        public string FullName { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
+        public int IdChatroom { get; set; }
+        public int IdUser { get; set; }
     }
 }

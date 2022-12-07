@@ -11,6 +11,7 @@
             <TextBox Name="LoginTb"/>
             <TextBox Name="PasswordTb"/>
             <Button x:Name="LoginBtn" Content="Войти" Click="SignIn"/>
+            <CheckBox Name="Remember" Content="Запомнить меня"/>
         </StackPanel>
     </Grid>
 </Window>
