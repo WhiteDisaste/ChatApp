@@ -23,11 +23,14 @@ namespace ChatApp.View.Windows
     public partial class ChatMessage : Window
     {
         List<ChatMessagePartial> chatMessagePartials = new List<ChatMessagePartial>();
+        HttpClient httpClient = new HttpClient(); 
         public ChatMessage()
         {
             InitializeComponent();
             Title = Main.chatRoom.Topic;
+            MainWindow.employee.Id.ToString();
             GetMessage();
+
         }
 
         private async void GetMessage()
@@ -39,11 +42,15 @@ namespace ChatApp.View.Windows
 
         }
 
-        private async void SendMessage()
+        private async void SendMessage(object sender, RoutedEventArgs e)
         {
-            HttpResponseMessage newmessage = await MainWindow.httpClient.GetAsync("http://localhost:58053/api/ChatMessages");
-            var content = txtSendMessage.Text;
-            chatMessagePartials = JsonConvert.DeserializeObject<List<ChatMessagePartial>>(content);
+            ChatMessagePartial partial = new ChatMessagePartial(MainWindow.employee.Id, Main.chatRoom.Id, txtSendMessage.Text, System.DateTime.Now);
+            HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(partial), Encoding.UTF8, "application/json");
+            HttpResponseMessage newmessage = await httpClient.PostAsync("http://localhost:58053/api/ChatMessages", httpContent);
+
+            txtSendMessage.Text = "";
         }
+
+       
     }
 }
