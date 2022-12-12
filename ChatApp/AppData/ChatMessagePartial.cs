@@ -8,6 +8,13 @@ namespace ChatApp.AppData
 {
     public partial class ChatMessagePartial
     {
+        public ChatMessagePartial(int idUser, int idChatRoom, string textMessage, DateTime dateTime)
+        {
+            IdUser = idUser;
+            IdChatRoom = idChatRoom;
+            TextMessage = textMessage;
+            DateTime = dateTime;
+        }
         public int Id { get; set; }
         public int IdUser { get; set; } 
         public int IdChatRoom { get; set; }

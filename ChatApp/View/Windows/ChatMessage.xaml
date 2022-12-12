@@ -14,5 +14,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+            <TextBox x:Name="txtSendMessage" Width="200" Margin="20"/>
+            <Button Name="SendBtn" Margin="20" Width="200" Height="40" Content="Send" />
+        </StackPanel>
     </Grid>
 </Window>

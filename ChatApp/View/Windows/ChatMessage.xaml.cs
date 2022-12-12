@@ -38,5 +38,12 @@ namespace ChatApp.View.Windows
             MessageList.ItemsSource = chatMessagePartials.Where(i => i.IdChatRoom == Main.chatRoom.Id);
 
         }
+
+        private async void SendMessage()
+        {
+            HttpResponseMessage newmessage = await MainWindow.httpClient.GetAsync("http://localhost:58053/api/ChatMessages");
+            var content = txtSendMessage.Text;
+            chatMessagePartials = JsonConvert.DeserializeObject<List<ChatMessagePartial>>(content);
+        }
     }
 }
